@@ -48,32 +48,14 @@ function Demo(){
 }
 Demo();
 /*annonymous function : no name, ref var: let, var, const */
-let cubeFun=function(num){
+let cubeFun=function  (num){
   return num*num*num;
 }
 var res=cubeFun(6);
 document.write("Cube is "+res);
 document.write("Cube is "+cubeFun(7));
-/*arrow function : fat arrow functions => */
-/*no name, no function keyword, ()=>{}*/ 
-let arrowFun1=(no1,no2)=>{
-  let res= Math.sqrt(no1)+Math.sqrt(no2);
-  console.log(res);
-}
-arrowFun1(49,25);
-/*if body of arrow function contains single stmt then {} are optional*/ 
-let arrowFun2=(no1,no2)=>console.log(Math.sqrt(no1)+Math.sqrt(no2));
-arrowFun2(49,25);
-/*if body of arrow function contains single return stmt then if u are remving {} 
-then return keyword must not be used
-body by default returns the result*/ 
 
-let arrowFun3=(no1,no2)=>Math.sqrt(no1)+Math.sqrt(no2);
-let myres=arrowFun3(49,25);
-console.log(myres);
-/*if formal argument is exactly one then () are optional*/ 
+let arrowFun=num=>num*num*num
 
-let arrowFun4=no1=>Math.sqrt(no1);
-
-myres=arrowFun4(49);
-console.log(myres);
+let res=arrowFun(6);
+console.log("cube is:"+res);

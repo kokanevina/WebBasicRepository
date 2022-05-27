@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onmouseover="fun1()" onmouseout="fun2()">CLICK</button>
+    <button onclick="finish()">FINISH EXAM</button>
+    <button onmouseenter="add()">ADD</button>
+    <label>Enter you name</label><input type="text"  onfocus="fun1()" onblur="fun2()" onkeyup="alert('key up event')">
+    <label>Choose Gender</label><input type="radio" name="gender" onchange="fun1()">:male
+    <input type="radio" name="gender" onchange="fun2()">:female
+  <!--   do the same for 1 checkbox :  -->
+    <script>
+        function fun1(){
+            console.log("Function 1 called....");
+           /*  document.write("<b>Function called....</b>"); */
+        }
+        function fun2(){
+            console.log("Function 2 called....");
+           /*  document.write("<b>Function called....</b>"); */
+        }
+        function finish(){
+           /*  window.alert("You have clicked on Finish exam button"); */
+            const action=window.confirm("Do you really want to finish the exam??")
+            console.log(action);
+            if(action)
+                console.log("Your exam submitted");
+            else
+                console.log("You can continue with ur exam...");
+        }
+        function add(){
+            let num1=window.prompt('Enter 1st number');
+            let num2=window.prompt('Enter 2nd number'); // always returns string
+            console.log(num1);
+            console.log(num2);
+            console.log(typeof num1);
+            console.log(parseFloat(num1)+parseFloat(num2));
+        }
+    </script>
+</body>
+</html>

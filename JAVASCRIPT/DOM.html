@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM DEMOS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <!-- DOM DEMO-->
+    <div>
+        <div class="addblock">
+            <label>Enter number 1:</label><input type="number" id="num1" name="num" oninput="extractValue()"><br>
+            <label>Enter number 2:</label><input type="number" id="num2" name="num"><br>
+            <button onclick="add()">ADD</button>
+        </div>     
+        <div class="addblock">
+            <label>Enter string 1:</label><input type="text" id="s1" name="s" ><br>
+            <label>Enter string 2:</label><input type="text" id="s2" name="s"><br>
+            <button>ADD</button>
+        </div>
+    </div>
+    <script>
+        console.log(document.body.children);
+        const node1=document.getElementById('num1');  // one
+        console.log(node1); console.log(node1.type);
+        console.log(node1.id); console.log(node1.name);
+        //node1.type="password";
+        function extractValue(){
+            let no1=node1.value;
+            console.log(no1);
+        }
+       let nodearray= document.getElementsByName('num');
+       console.log(nodearray);
+       let sum=0;
+       function add(){
+       for(let node of nodearray){
+           console.log(node.type);
+           console.log(node.value);
+           sum=sum+parseFloat(node.value);
+           console.log(sum);
+       }
+    }
+    // use getElementsByClassName : array : display
+    // use getElementsbyTagName : label : array : display
+    const labelarray=document.getElementsByTagName('label');
+    console.log(labelarray);
+    console.log(document.title);
+    </script>
+</body>
+</html>
