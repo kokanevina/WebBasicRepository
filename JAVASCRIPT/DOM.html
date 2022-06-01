@@ -4,24 +4,40 @@
     <title>DOM DEMOS</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <style>
+        #addnumsButton{
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
     <!-- DOM DEMO-->
     <div>
-        <div class="addblock">
-            <label>Enter number 1:</label><input type="number" id="num1" name="num" oninput="extractValue()"><br>
-            <label>Enter number 2:</label><input type="number" id="num2" name="num"><br>
-            <button onclick="add()">ADD</button>
+        <div class="addblock" id="block1">
+            <label for="num1">Enter number 1:</label><input type="number" id="num1" name="num" oninput="extractValue()"><br>
+            <label >Enter number 2:</label><input type="number" id="num2" name="num"><br>
+            <button onclick="add()" id="addnumsButton">add</button>
+
+            <footer id="myfooter">
+                 <b>this is footer</b> <i>this is footer</i>
+            </footer>
         </div>     
         <div class="addblock">
-            <label>Enter string 1:</label><input type="text" id="s1" name="s" ><br>
-            <label>Enter string 2:</label><input type="text" id="s2" name="s"><br>
-            <button>ADD</button>
+            <label for>Enter string 1:</label><input type="text" id="s1" name="s" ><br>
+            <label for>Enter string 2:</label><input type="text" id="s2" name="s"><br>
+            <button onclick="addStrings()">ADD</button> <br>
+           <label>Result is:</label><b id="result"></b>
+           <footer id="myfooter2">
+
+           </footer>
         </div>
     </div>
     <script>
-        console.log(document.body.children);
+        let btNode=document.getElementById('addnumsButton');
+        btNode.style.padding='10px';
+        btNode.style.backgroundColor="blue";  // 1st change in background color
+        btNode.style.textTransform='uppercase';
+        console.log(document.body.children); // childNodes
         const node1=document.getElementById('num1');  // one
         console.log(node1); console.log(node1.type);
         console.log(node1.id); console.log(node1.name);
@@ -32,20 +48,62 @@
         }
        let nodearray= document.getElementsByName('num');
        console.log(nodearray);
-       let sum=0;
+       let newPNode=null;
        function add(){
+        let sum=0;
        for(let node of nodearray){
-           console.log(node.type);
-           console.log(node.value);
-           sum=sum+parseFloat(node.value);
-           console.log(sum);
-       }
-    }
+           console.log(node.type);console.log(node.value); sum=sum+parseFloat(node.value); console.log(sum);     
+        }
+        btNode.style.backgroundColor="green";// 2nd change in background color
+        let paraNode=document.createElement('p'); // to create new node
+        let sumNode=document.createTextNode(sum+'');  // to create new text node
+        paraNode.append(sumNode); // will append element as last child of parent
+        if(newPNode==null)
+            newPNode=document.getElementById('block1').insertBefore(paraNode,document.getElementById('myfooter'));// add element 
+        else{
+            newPNode.innerText=""; // it will set text to paragraph // clear
+            newPNode.append(sumNode);
+        } 
+            //before exisiting sibling inside the parent
+    }// in function
     // use getElementsByClassName : array : display
     // use getElementsbyTagName : label : array : display
     const labelarray=document.getElementsByTagName('label');
     console.log(labelarray);
     console.log(document.title);
+    let snode1=document.getElementById('s1');
+    let snode2=document.getElementById('s2');
+    let addStrings=function (){
+        let sumstrings=snode1.value+snode2.value;
+       document.getElementById('result').innerHTML="<i>"+sumstrings+"</i>";
+       //innerHTML : to get or to set html elements inside any element
+       //innerText : to get or to set just text contents inside any element (html elements considered as plaintext)
+    }
+    let fnode1=document.getElementById('myfooter');
+    let contents=fnode1.innerHTML;  // innerText
+    let fnode2=document.getElementById('myfooter2');
+    fnode2.innerHTML=contents;   // innerText
+    let colorArray=['red','green','blue','yellow','pink'];
+    i=0;
+ /*    setInterval(()=>{
+            document.body.style.backgroundColor=colorArray[i];
+            if(i==colorArray.length)
+                 i=0;
+            else
+                i++;
+    },1000); */
+
+    let interval=setInterval(()=>{
+            document.body.style.backgroundColor=colorArray[i];
+            if(i==colorArray.length)
+                clearInterval(interval);
+            else
+                i++;
+    },1000);
+    setTimeout(()=>document.title='DOM methodology',3000);
+    /*drop downlist, checkbox, radiobutton, color picker, date picker */
     </script>
+
+
 </body>
 </html>

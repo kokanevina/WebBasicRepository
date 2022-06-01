@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Select Color:</label><input type="color" id="colorPicker" onchange="changeColor()"><br>
+    <label>Choose your joining date:</label><input type="date" id="jdate" oninput="getJoining()">;
+    <div>
+        <label>Choose Courses u want a training for</label><br><br>
+        <input type="checkbox" onchange="collectCourses()" style="height: 20px;width: 20px;" id="ch1" name="course" value="java"><label>JAVA</label>
+        <input type="checkbox" onchange="collectCourses()" id="ch2" name="course" value="web" checked><label>WEB BASICS</label>
+        <input type="checkbox" onchange="collectCourses()"  id="ch3" name="course" value="bootstrap"><label>BOOTSTRAP</label>
+    </div>
+    <!-- do the same of radio buttons-->
+   <script>
+        let colorNode=document.getElementById('colorPicker');
+        document.body.style.border="10px double";
+        function changeColor(){
+            let bcolor=colorNode.value;
+            document.body.style.borderColor=bcolor;
+        }
+        let checkArray=document.getElementsByName('course');
+        function collectCourses(){
+            for(let checkNode of checkArray){
+                if(checkNode.checked){
+                    console.log(checkNode.value);
+                }
+            }
+        }
+        let dateNode=document.getElementById('jdate');
+        function getJoining(){
+           let s=dateNode.value;
+            console.log(typeof s);
+            let joinDate=new Date(s);
+            console.log(typeof joinDate);
+            console.log(joinDate.getMonth());
+            
+        }
+    </script>
+</body>
+</html>
