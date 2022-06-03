@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOM DEMOS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #addnumsButton{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- DOM DEMO-->
+    <div>
+        <div class="addblock" id="block1">
+            <label for="num1">Enter number 1:</label><input type="number" id="num1" name="num" value="0"><br>
+            <label >Enter number 2:</label><input type="number" id="num2" name="num"><br>
+            <button id="addnumsButton">add</button>
+
+            <footer id="myfooter">
+                 <b>this is footer</b> <i>this is footer</i>
+            </footer>
+        </div>     
+        <div class="addblock">
+            <label for>Enter string 1:</label><input type="text" id="s1" name="s"  ><br>
+            <label for>Enter string 2:</label><input type="text" id="s2" name="s"><br>
+            <button onclick="addStrings()">ADD</button> <br>
+           <label>Result is:</label><b id="result"></b>
+           <footer id="myfooter2">
+
+           </footer>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            let btNode=$('#addnumsButton');
+            btNode.css({padding:'10px',backgroundColor:"blue",textTransform:'uppercase'});
+            console.log(document.body.children); 
+            const node1=$('#num1');  
+            console.log(node1); 
+            console.log(node1.attr('value')); // not the better way
+            console.log(node1.attr('type'));
+            console.log(node1.attr('id'));
+            console.log(node1.attr('name'));
+           /*  node1.attr('type','password'); */
+            $('#num1').keyup(()=>extractValue());
+           function extractValue(){
+               let no1=$('#num1').val(); // value attr in javascript
+               console.log(no1);
+           }
+            
+        let numnode1=$('#num1');
+        let numnode2=$('#num2');  
+        $('#addnumsButton').click(()=>add());
+        let flag=false;
+        function add(){
+            let sum=parseFloat(numnode1.val())+parseFloat(numnode2.val());
+            console.log(sum);
+            if(flag==false){
+             let paraNode=$('<p></p>').text(sum);
+             paraNode.attr('id','resultpara');
+             $('#block1').append(paraNode);
+             flag=true;
+            }
+            else
+                $('#resultpara').text(sum);
+            
+        }
+            // attr('class') , addClass
+        });
+
+    </script>
+
+
+</body>
+</html>

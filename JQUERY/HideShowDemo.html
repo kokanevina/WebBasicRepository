@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- built in methods -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+      // jquery does not need event attributes in html tag instead it has event functions
+      // $: jquery selector, button : element selector
+     $(document).ready(function(){
+        $('button').click(function(){
+            let imgNode=$('#myimage');
+            if($('button').text()==='HIDE')
+            {         
+                imgNode.hide(9000, function(){
+                    $('button').text('SHOW');  
+                });       
+            } 
+            else{
+                imgNode.show(3000, function(){
+                    $('button').text('HIDE');  
+                });  
+            }     
+        });
+
+        $('[type="button"]').click(function(){
+            $('#myimage').toggle(3000,function(){
+                alert('DONE');
+            });
+        });
+
+     });
+</script>
+</head>
+<body>
+    <button>HIDE</button><br>
+    <img src="../JAVASCRIPT/Images/kk.jpg" id="myimage"><br>
+    <input type="button" value="HIDE-SHOW">
+</body>
+</html>

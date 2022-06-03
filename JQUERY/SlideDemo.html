@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- built in methods -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+      // jquery does not need event attributes in html tag instead it has event functions
+      // $: jquery selector, button : element selector
+     $(document).ready(function(){
+        $('button').click(function(){
+            let imgNode=$('#myimage');
+            if($('button').text()==='SLIDE UP')   // FADE OUT
+            {         
+                imgNode.slideUp(9000, function(){    // fadeOut
+                    $('button').text('SLIDE DOWN');    // FADE IN
+                });       
+            } 
+            else{
+                imgNode.slideDown(3000, function(){   // fadeIn
+                    $('button').text('SLIDE UP');  
+                });  
+            }     
+        });
+
+        $('[type="button"]').click(function(){
+            $('#myimage').slideToggle(3000);   //fadeToggle
+        });
+
+     });
+</script>
+</head>
+<body>
+    <button>SLIDE UP</button><br>
+    <img src="../JAVASCRIPT/Images/kk.jpg" id="myimage" height="200" width="300"><br>
+    <input type="button" value="SLIDEUP-DOWN">
+</body>
+</html>

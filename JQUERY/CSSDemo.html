@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block{
+            height: 200px;
+            width: 400px;
+            border: 1px solid red;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.block').mouseover(function(){
+                //$(this).css('background-color','yellow');
+                $(this).css({backgroundColor:'yellow', color:'pink', border:'4px double blue'});
+            });
+            $('.block').mouseleave(function(){
+               // $(this).css('background-color','white');
+               $(this).css({'color':'purple','background-color':'green'});
+            });
+        });
+    </script>
+</head>
+<body>
+   <section>
+       <div class="block">
+           India is my country 1
+       </div>
+        <div class="block">
+           India is my country 2
+       </div>
+       <div class="block">
+            India is my country 3
+        </div>
+   </section> 
+</body>
+</html>
